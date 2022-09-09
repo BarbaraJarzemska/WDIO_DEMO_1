@@ -93,7 +93,7 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost:8081/index.html',
+  baseUrl: 'http://localhost:8080/index.html',
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -186,7 +186,7 @@ exports.config = {
   // beforeSession: function (config, capabilities, specs, cid) {
   // },
   /**
-   * Gets executed before test execution begins. At this point you can access to all global
+   * Gets executed before test execution begins. At this point you can access to all
    * variables like `browser`. It is the perfect place to define custom commands.
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs        List of spec file paths that are to be run
@@ -253,7 +253,7 @@ exports.config = {
   // afterCommand: function (commandName, args, result, error) {
   // },
   /**
-   * Gets executed after all tests are done. You still have access to all global variables from
+   * Gets executed after all tests are done. You still have access to all  variables from
    * the test.
    * @param {Number} result 0 - test pass, 1 - test fail
    * @param {Array.<Object>} capabilities list of capabilities details

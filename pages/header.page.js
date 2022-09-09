@@ -19,6 +19,16 @@ class HeaderPage {
     return $('#navbarSupportedContent > ul > li.nav-item.dropdown.show > div > a:nth-child(2)');
   }
 
+  async heroFactLinkWolverine() {
+    await this.heroFactsLink.click();
+    await this.wolverineOption.click();
+  }
+
+  async heroFactLinkSpiderman() {
+    await this.heroFactsLink.click();
+    await this.spidermanOption.click();
+  }
+
   get searchField() {
     return $('#search-box');
   }
@@ -26,10 +36,15 @@ class HeaderPage {
     return $('#search-form > button');
   }
 
+  async searchThings(name) {
+    await this.searchField.setValue(name);
+    await this.searchButton.click();
+  }
+
   get wolverineModalWindow() {
     return $('#wolverineModal > div > div');
   }
-  
+
   get wolverineModalTitleText() {
     return $('#wolverineModalLabel');
   }

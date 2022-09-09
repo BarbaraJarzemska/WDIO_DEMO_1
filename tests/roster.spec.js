@@ -5,9 +5,7 @@ const RosterPage = require('../pages/roster.page');
 describe('Roster Test Suite', () => {
   it('should description and header be right', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     assert.equal(
       await RosterPage.instructionText.getText(),
@@ -21,9 +19,7 @@ describe('Roster Test Suite', () => {
 
   it('should test correct Text label of each character', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     assert.equal(await RosterPage.wolverinePos.getText(), 'Wolverine', 'Text is the same');
     assert.equal(await RosterPage.ironmanPos.getText(), 'Iron Man', 'Text is the same');
@@ -34,9 +30,7 @@ describe('Roster Test Suite', () => {
 
   it('should check attribute', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     assert.equal(
       await RosterPage.searchFieldRoster.getAttribute('placeholder'),
@@ -47,9 +41,7 @@ describe('Roster Test Suite', () => {
 
   it('should add correctly a new superhero', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     var newItem = 'Bob';
     await RosterPage.searchFieldRoster.setValue(newItem);

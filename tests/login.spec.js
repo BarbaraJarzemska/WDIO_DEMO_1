@@ -7,18 +7,18 @@ describe('Login Test Suite', () => {
   //valid password: password
   it('should display error when password is missing', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('test@test.com');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('test@test.com', '');
     assert.equal(await browser.isAlertOpen(), true, 'Allert is not open');
     assert.equal(await browser.getAlertText(), 'Please enter an email and password', 'Alert text is not equal');
     await browser.acceptAlert();
     assert.equal(await browser.isAlertOpen(), false, 'The allert is still open');
-    // browser.pause(3000);
+   
   });
   it('should display error when email is missing', async () => {
     await browser.url('');
-    await LoginPage.passwordField.setValue('blabla');
-    await LoginPage.submitButton.click();
+
+    await LoginPage.login('', 'blabla');
+
     assert.equal(await browser.isAlertOpen(), true, 'Alert is not open');
     assert.equal(await browser.getAlertText(), 'Please enter an email and password', 'Alert text is not equal');
     await browser.acceptAlert();
@@ -34,9 +34,8 @@ describe('Login Test Suite', () => {
   });
   it('should dispaly error when email is incorrect', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('dupa@wp.pl');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('something@wp.pl', 'password');
+
     assert.equal(await browser.isAlertOpen(), true, 'The alert is open');
     assert.equal(await browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
     await browser.acceptAlert();
@@ -44,9 +43,8 @@ describe('Login Test Suite', () => {
   });
   it('should display error when password is incorrect', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password2');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password2');
+
     assert.equal(await browser.isAlertOpen(), true, 'The alert is open');
     assert.equal(await browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
     await browser.acceptAlert();
@@ -54,9 +52,8 @@ describe('Login Test Suite', () => {
   });
   it('should display error when password case is incorrect', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('PASSWORD');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'PASSWORD');
+
     assert.equal(await browser.isAlertOpen(), true, 'The alert is open');
     assert.equal(await browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
     await browser.acceptAlert();
@@ -65,9 +62,7 @@ describe('Login Test Suite', () => {
 
   it('should login with valid email and password', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     assert.equal(await LoginPage.overlay.isDisplayed(), false, 'Overlay is still displayed');
   });
@@ -89,9 +84,7 @@ describe('Login Test Suite', () => {
 
   it('Should not remember login creeds', async () => {
     await browser.url('');
-    await LoginPage.emailField.setValue('1@2.com');
-    await LoginPage.passwordField.setValue('password');
-    await LoginPage.submitButton.click();
+    await LoginPage.login('1@2.com', 'password');
 
     assert.equal(await LoginPage.overlay.isDisplayed(), false, 'Overlay is still displayed');
     await HeaderPage.logoutLink.click();

@@ -32,6 +32,9 @@ class RosterPage {
   get newItem() {
     return $('#hero-list > li:nth-child(6)');
   }
+  get rosterItems() {
+    return $$('#hero-list > li');
+  }
 
   get labelHeader() {
     return $('#addHero-form > div > label');
@@ -42,6 +45,11 @@ class RosterPage {
   }
   get submitButtonRoster() {
     return $('#addHero-form > button');
+  }
+
+  async addHeroRoster(someHero) {
+    await this.searchFieldRoster.setValue(someHero);
+    await this.submitButtonRoster.click();
   }
 }
 
